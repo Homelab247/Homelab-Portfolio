@@ -6,6 +6,9 @@
 |---|---|---|---|
 | Uptime Kuma | LXC 102 `monitoring` | Erreichbarkeitsmonitoring | aktiv |
 | Grafana | LXC 102 `monitoring` | Dashboards | aktiv |
+| Prometheus | LXC 102 `monitoring` | Metriksammlung | aktiv |
+| Node Exporter | LXC 102 `monitoring` | Systemmetriken Monitoring-LXC | aktiv |
+| Node Exporter | LXC 110 `docker-services` | Systemmetriken Docker-Services-LXC | aktiv |
 | Docker Engine | LXC 110 `docker-services` | Containerplattform | aktiv |
 | IT-Tools | LXC 110 `docker-services` | Demo-/Admin-Webtool | aktiv |
 | Home Assistant | VM 103 | Smart Home | aktiv |
@@ -17,9 +20,17 @@
 
 Uptime Kuma wird für Verfügbarkeitschecks genutzt. Typische Checks sind HTTP, Ping oder TCP-Port-Prüfungen.
 
+### Prometheus
+
+Prometheus sammelt Metriken im Monitoring-LXC. In der ersten Ausbaustufe werden Prometheus selbst sowie Node Exporter in LXC 102 und LXC 110 abgefragt.
+
 ### Grafana
 
-Grafana dient als Dashboard-Oberfläche. Aktuell ist es als Basisdienst installiert. Der nächste Ausbau besteht aus Prometheus, Exportern und eigenen Dashboards.
+Grafana dient als Dashboard-Oberfläche und nutzt Prometheus als Datenquelle. Ein einfaches Dashboard ist als JSON im Repository dokumentiert.
+
+### Node Exporter
+
+Node Exporter läuft als Docker-Container innerhalb der LXCs. Auf dem Proxmox-Host wurden keine zusätzlichen Pakete installiert.
 
 ## Docker Services
 

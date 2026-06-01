@@ -5,7 +5,7 @@
 ![Proxmox](https://img.shields.io/badge/Proxmox-VE-orange?logo=proxmox)
 ![Linux](https://img.shields.io/badge/Linux-Server-informational?logo=linux)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)
-![Monitoring](https://img.shields.io/badge/Monitoring-Grafana%20%7C%20Uptime%20Kuma-green)
+![Monitoring](https://img.shields.io/badge/Monitoring-Uptime%20Kuma%20%7C%20Grafana%20%7C%20Prometheus-green)
 ![Status](https://img.shields.io/badge/Status-in%20Aufbau-yellow)
 
 ## Überblick
@@ -19,7 +19,7 @@ Das Homelab ist bewusst als Lern- und Testumgebung aufgebaut. Die Dokumentation 
 - Virtualisierung mit Proxmox VE
 - Linux-Server und LXC-Container
 - Docker Engine und Docker Compose
-- Monitoring mit Uptime Kuma und Grafana
+- Monitoring mit Uptime Kuma, Grafana, Prometheus und Node Exporter
 - Storage- und Backup-Konzept
 - Smart-Home-Integration mit Home Assistant
 - Automatisierung mit Hermes Agent
@@ -59,6 +59,7 @@ flowchart TD
 
     Monitoring --> Kuma[Uptime Kuma]
     Monitoring --> Grafana[Grafana]
+    Monitoring --> Prometheus[Prometheus / Node Exporter]
     Docker --> Tools[IT-Tools / Demo-Services]
 ```
 
@@ -68,7 +69,7 @@ flowchart TD
 |---|---|---|
 | Proxmox VE | Virtualisierung | Basis für VMs und LXC-Container |
 | LXC 101 | Storage | Datenablage, SMB/CIFS, Backup-Ziel |
-| LXC 102 | Monitoring | Uptime Kuma und Grafana |
+| LXC 102 | Monitoring | Uptime Kuma, Grafana, Prometheus und Node Exporter |
 | LXC 110 | Docker Services | Separater Container für Docker-/Demo-Dienste |
 | VM 103 | Smart Home | Home Assistant |
 | VM 104 | Automation | Hermes Agent, Telegram Gateway, Automatisierung |
@@ -82,6 +83,8 @@ Private IP-Adressen, Tokens, MAC-Adressen und sensible Details werden bewusst ni
 |---|---|---|
 | Uptime Kuma | Verfügbarkeitsmonitoring | LXC 102 `monitoring` |
 | Grafana | Dashboards / Metriken | LXC 102 `monitoring` |
+| Prometheus | Metriksammlung | LXC 102 `monitoring` |
+| Node Exporter | Linux-Systemmetriken | LXC 102 `monitoring`, LXC 110 `docker-services` |
 | Docker Engine | Containerplattform | LXC 110 `docker-services` |
 | IT-Tools | Beispiel-/Demo-Webtool | LXC 110 `docker-services` |
 | Home Assistant | Smart-Home-Verwaltung | VM 103 |
@@ -95,7 +98,7 @@ Die Dienste sind rollenbasiert getrennt. Storage, Monitoring, allgemeine Docker-
 
 ### Monitoring betreiben
 
-Uptime Kuma übernimmt Verfügbarkeitschecks. Grafana dient als Dashboard-Schicht und kann später mit Prometheus, Exportern und weiteren Metrikquellen ausgebaut werden.
+Uptime Kuma übernimmt Verfügbarkeitschecks. Prometheus sammelt erste Systemmetriken über Node Exporter. Grafana dient als Dashboard-Schicht und visualisiert diese Metriken.
 
 ### Containerisierung nutzen
 
@@ -134,8 +137,8 @@ Jede Rolle wird in eigenen Markdown-Dateien beschrieben. Das Repository soll nac
 - [x] Grafana im Monitoring-LXC ergänzen
 - [x] Separaten Docker-Services-LXC erstellen
 - [x] Beispielservice über Docker Compose bereitstellen
-- [ ] Prometheus und Exporter sauber ergänzen
-- [ ] Grafana-Dashboard exportieren und dokumentieren
+- [x] Prometheus und Exporter sauber ergänzen
+- [x] Grafana-Dashboard exportieren und dokumentieren
 - [ ] Backup-Prozess praktisch testen und dokumentieren
 - [ ] Netzwerkdiagramm als Draw.io-Datei ergänzen
 - [ ] Beispiel-Screenshots anonymisiert hinzufügen
