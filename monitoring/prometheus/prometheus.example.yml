@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Beispiele später gezielt ergänzen:
+  # - node_exporter auf Linux-Systemen
+  # - Proxmox-Metriken über geeigneten Exporter oder API-basierten Ansatz
+  # - Docker-Metriken im separaten LXC 110, nicht blind im Monitoring-LXC
