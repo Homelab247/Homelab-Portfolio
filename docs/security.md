@@ -11,7 +11,7 @@ Dieses Repository ist für eine öffentliche bzw. bewerbungstaugliche Darstellun
 - Zertifikate und private Schlüssel
 - MAC-Adressen
 - vollständige private Netzpläne mit sensiblen Details
-- proprietäre oder private Testdaten
+- proprietäre oder private Lab-Daten
 
 ## Dokumentationsprinzip
 
@@ -23,8 +23,8 @@ Dienste werden nach Funktion getrennt:
 
 - Storage getrennt von Monitoring
 - Monitoring getrennt von allgemeinen Docker-Diensten
-- Automation getrennt von Testsystemen
-- Testlabs isoliert
+- Automation getrennt von Lab-Systemen
+- Lab-Umgebungen isoliert
 
 Diese Trennung reduziert Risiko und vereinfacht Updates, Backups und Fehlersuche.
 

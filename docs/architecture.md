@@ -13,7 +13,7 @@ Proxmox VE
 ├── Docker-Services-LXC
 ├── Smart-Home-VM
 ├── Automation-VM
-└── isolierte Test-/Lernumgebungen
+└── isolierte isolierte Lern- und Laborumgebungen
 ```
 
 ## Grundentscheidungen
@@ -36,10 +36,10 @@ Home Assistant und Automation laufen als eigene VMs, wenn das für Stabilität, 
 |---|---|---|
 | Storage | LXC 101 | Datenablage, SMB/CIFS, Backup-Ziel |
 | Monitoring | LXC 102 | Uptime Kuma, Grafana |
-| Docker Services | LXC 110 | Docker Engine, Compose, Demo-/Tool-Dienste |
+| Docker Services | LXC 110 | Docker Engine, Compose, Werkzeug- und Admin-Dienste |
 | Smart Home | VM 103 | Home Assistant |
 | Automation | VM 104 | Hermes Agent und Automationsworkflows |
-| Testlab | separate VMs | isolierte Lern- und Testsysteme |
+| Lab-Umgebung | separate VMs | isolierte Lern- und Lab-Systeme |
 
 ## Warum nicht alles in einem Container?
 

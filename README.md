@@ -12,7 +12,7 @@
 
 Dieses Repository dokumentiert mein persönliches Homelab als praxisnahes IT-Portfolio. Ziel ist es, typische Aufgaben aus Systemadministration und Fachinformatik Systemintegration nachvollziehbar zu zeigen: Virtualisierung, Dienste trennen, Monitoring aufbauen, Storage strukturieren, Backups planen, Automatisierung einsetzen und Änderungen sauber dokumentieren.
 
-Das Homelab ist bewusst als Lern- und Testumgebung aufgebaut. Die Dokumentation zeigt nicht nur, welche Dienste laufen, sondern auch, warum sie getrennt wurden und welche administrativen Fähigkeiten dabei trainiert werden.
+Das Homelab ist bewusst als Lern- und Laborumgebung aufgebaut. Die Dokumentation zeigt nicht nur, welche Dienste laufen, sondern auch, warum sie getrennt wurden und welche administrativen Fähigkeiten dabei trainiert werden.
 
 ## Schwerpunkte
 
@@ -55,12 +55,12 @@ flowchart TD
     Proxmox --> Docker[LXC 110: Docker Services]
     Proxmox --> HA[VM 103: Home Assistant]
     Proxmox --> Hermes[VM 104: Automation / Hermes Agent]
-    Proxmox --> Labs[Test- und Lernumgebungen]
+    Proxmox --> Labs[Labor- und Lernumgebungen]
 
     Monitoring --> Kuma[Uptime Kuma]
     Monitoring --> Grafana[Grafana]
     Monitoring --> Prometheus[Prometheus / Node Exporter]
-    Docker --> Tools[IT-Tools / Demo-Services]
+    Docker --> Tools[IT-Tools / Werkzeugdienste]
 ```
 
 ## Systeme und Rollen
@@ -70,10 +70,10 @@ flowchart TD
 | Proxmox VE | Virtualisierung | Basis für VMs und LXC-Container |
 | LXC 101 | Storage | Datenablage, SMB/CIFS, Backup-Ziel |
 | LXC 102 | Monitoring | Uptime Kuma, Grafana, Prometheus und Node Exporter |
-| LXC 110 | Docker Services | Separater Container für Docker-/Demo-Dienste |
+| LXC 110 | Docker Services | Separater Container für Docker-/Werkzeugdienste |
 | VM 103 | Smart Home | Home Assistant |
 | VM 104 | Automation | Hermes Agent, Telegram Gateway, Automatisierung |
-| Testlabs | Lernumgebung | Isolierte Windows-/Linux-Testumgebungen |
+| Lab-Umgebungen | Lernumgebung | Isolierte Windows-/Linux-Laborumgebungen |
 
 Private IP-Adressen, Tokens, MAC-Adressen und sensible Details werden bewusst nicht öffentlich dokumentiert.
 
@@ -86,7 +86,7 @@ Private IP-Adressen, Tokens, MAC-Adressen und sensible Details werden bewusst ni
 | Prometheus | Metriksammlung | LXC 102 `monitoring` |
 | Node Exporter | Linux-Systemmetriken | LXC 102 `monitoring`, LXC 110 `docker-services` |
 | Docker Engine | Containerplattform | LXC 110 `docker-services` |
-| IT-Tools | Beispiel-/Demo-Webtool | LXC 110 `docker-services` |
+| IT-Tools | Referenz-/Werkzeugdienst | LXC 110 `docker-services` |
 | Home Assistant | Smart-Home-Verwaltung | VM 103 |
 | Hermes Agent | Automatisierung / Assistenzsystem | VM 104 |
 
@@ -102,7 +102,7 @@ Uptime Kuma übernimmt Verfügbarkeitschecks. Prometheus sammelt erste Systemmet
 
 ### Containerisierung nutzen
 
-Allgemeine Tools und Demo-Dienste laufen in einem eigenen Docker-Services-LXC. Dadurch bleiben Monitoring und produktionsnahe Services sauber getrennt.
+Allgemeine Tools und Werkzeugdienste laufen in einem eigenen Docker-Services-LXC. Dadurch bleiben Monitoring und produktionsnahe Services sauber getrennt.
 
 ### Dokumentation pflegen
 
@@ -128,7 +128,7 @@ Jede Rolle wird in eigenen Markdown-Dateien beschrieben. Das Repository soll nac
 - keine Passwörter, Tokens oder API-Keys im Repository
 - keine MAC-Adressen oder sensiblen Hostdetails
 - öffentliche Dokumentation nutzt Rollen statt privater Detaildaten
-- Beispielkonfigurationen werden als `.example` dokumentiert
+- bereinigte Referenzkonfigurationen werden als `.example` dokumentiert
 - Dienste werden intern betrieben, keine öffentlichen Portfreigaben im Rahmen dieses Repos
 
 ## Roadmap
@@ -136,12 +136,12 @@ Jede Rolle wird in eigenen Markdown-Dateien beschrieben. Das Repository soll nac
 - [x] Rollenmodell für Storage, Monitoring, Docker Services und Automation festlegen
 - [x] Grafana im Monitoring-LXC ergänzen
 - [x] Separaten Docker-Services-LXC erstellen
-- [x] Beispielservice über Docker Compose bereitstellen
+- [x] erster produktiver interner Werkzeugdienst über Docker Compose bereitstellen
 - [x] Prometheus und Exporter sauber ergänzen
 - [x] Grafana-Dashboard exportieren und dokumentieren
-- [ ] Backup-Prozess praktisch testen und dokumentieren
+- [ ] Backup-Prozess praktisch validieren und dokumentieren
 - [ ] Netzwerkdiagramm als Draw.io-Datei ergänzen
-- [ ] Beispiel-Screenshots anonymisiert hinzufügen
+- [ ] anonymisierte Screenshots anonymisiert hinzufügen
 - [ ] GitHub Actions für Markdown-Prüfung ergänzen
 
 ## Hinweis

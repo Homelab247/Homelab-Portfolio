@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Einfacher Portcheck für interne Homelab-Dienste.
-# Für ein öffentliches Repository werden hier Beispieladressen genutzt.
+# Für ein öffentliches Repository werden hier anonymisierte interne Zieladressen genutzt.
 # In der echten Umgebung können diese Werte lokal angepasst werden.
 
 SERVICES=(

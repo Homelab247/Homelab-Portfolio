@@ -1,0 +1,17 @@
+services:
+  it-tools:
+    image: ghcr.io/corentinth/it-tools:latest
+    container_name: it-tools
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+
+  cyberchef:
+    image: ghcr.io/gchq/cyberchef:latest
+    container_name: cyberchef
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+
+# Referenz für LXC 110 docker-services.
+# Keine Secrets enthalten. Ports sind interne Referenzports, keine öffentliche Freigabe.

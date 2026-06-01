@@ -6,10 +6,10 @@
 |---|---|---|---|
 | 101 | Storage / Daten | LXC | Datenablage, SMB/CIFS, Backup-Ziel |
 | 102 | monitoring | LXC | Uptime Kuma, Grafana, Prometheus, Node Exporter |
-| 110 | docker-services | LXC | Docker Engine, Compose, Demo-Services, Node Exporter |
+| 110 | docker-services | LXC | Docker Engine, Compose, Werkzeugdienste, Node Exporter |
 | 103 | homeassistant | VM | Smart Home |
 | 104 | Hermes | VM | Automation, Agent, Telegram Gateway |
-| weitere | Testlabs | VM | isolierte Lern- und Testsysteme |
+| weitere | Lab-Umgebungen | VM | isolierte Lern- und Lab-Systeme |
 
 ## Designentscheidung
 
@@ -35,6 +35,6 @@ Docker läuft nicht direkt auf dem Proxmox-Host. Stattdessen gibt es einen eigen
 ## Geplante Erweiterungen
 
 - Uptime-Kuma-Checks für neue Monitoring-Komponenten ergänzen
-- optional cAdvisor für Container-Metriken testen
+- optional cAdvisor für Container-Metriken validieren
 - Proxmox-Metriken sicher anbinden
 - Backup- und Restore-Prozess dokumentieren

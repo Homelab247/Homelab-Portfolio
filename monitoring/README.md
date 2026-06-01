@@ -10,7 +10,7 @@ LXC 102 ist der dedizierte Ort für Monitoring-Dienste.
 | Grafana | Dashboards | 3000 | LXC 102 `monitoring` |
 | Prometheus | Metriksammlung | 9090 | LXC 102 `monitoring` |
 | Node Exporter | Systemmetriken | 9100 | LXC 102 und LXC 110 |
-| IT-Tools | Demo-/Admin-Webtool | 8081 | LXC 110 `docker-services` |
+| IT-Tools | Admin-/Werkzeugdienst | 8081 | LXC 110 `docker-services` |
 
 ## Live-Pfade
 
@@ -23,8 +23,8 @@ Die produktiven Compose-Dateien liegen bewusst auf den jeweiligen LXCs und nicht
 
 ## Repository-Inhalt
 
-- `compose.example.yml`: bereinigtes Beispiel ohne private IP-Adressen oder Secrets
-- `prometheus/prometheus.example.yml`: Beispiel-Scrape-Konfiguration
+- `compose.reference.yml`: bereinigtes Referenz ohne private IP-Adressen oder Secrets
+- `prometheus/prometheus.reference.yml`: bereinigte Scrape-Referenzkonfiguration
 - `grafana-dashboards/homelab-overview.json`: einfaches Start-Dashboard für Prometheus/Node Exporter
 
 ## Hinweise

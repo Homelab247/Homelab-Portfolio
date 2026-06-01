@@ -22,7 +22,7 @@
 
 ## Warum diese Hardware?
 
-Der Server bietet genug Leistung für mehrere parallele VMs und LXC-Container. Die CPU mit 8 Kernen / 16 Threads eignet sich gut für Virtualisierung, Testumgebungen, Monitoring, Smart-Home-Dienste und Automatisierung.
+Der Server bietet genug Leistung für mehrere parallele VMs und LXC-Container. Die CPU mit 8 Kernen / 16 Threads eignet sich gut für Virtualisierung, Laborumgebungen, Monitoring, Smart-Home-Dienste und Automatisierung.
 
 Die getrennte Storage-Struktur hilft dabei, Systemdaten und Nutzdaten sauberer zu organisieren.
 
@@ -30,4 +30,4 @@ Die getrennte Storage-Struktur hilft dabei, Systemdaten und Nutzdaten sauberer z
 
 - Stromverbrauch mit Messsteckdose dokumentieren
 - Auslastung über Grafana sichtbar machen
-- Backup- und Restore-Test auf Storage-Ebene dokumentieren
+- Backup- und Restore-Labor auf Storage-Ebene dokumentieren

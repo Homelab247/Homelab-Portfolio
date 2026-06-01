@@ -6,7 +6,7 @@ Backups sollen wichtige Konfigurationen, Dokumentation und Dienste wiederherstel
 
 ## Zu sichernde Bereiche
 
-| Bereich | Beispiele |
+| Bereich | Referenzen |
 |---|---|
 | Proxmox-Konfiguration | VM-/LXC-Konfigurationen, Rollenübersicht |
 | Docker Compose | Compose-Dateien und `.env.example`-Vorlagen |
@@ -19,11 +19,11 @@ Backups sollen wichtige Konfigurationen, Dokumentation und Dienste wiederherstel
 - Konfigurationen versionieren
 - keine Secrets in Git speichern
 - Wiederherstellung dokumentieren
-- Backups regelmäßig testen
+- Backups regelmäßig validieren
 - kritische Dienste vor Änderungen sichern
 
 ## Geplante Erweiterung
 
 - automatisierte Config-Exports
-- Restore-Test dokumentieren
+- Restore-Labor dokumentieren
 - Backup-Check in Uptime Kuma überwachen

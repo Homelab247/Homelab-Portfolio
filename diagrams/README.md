@@ -16,7 +16,7 @@ Heimnetz
     │   └── IT-Tools
     ├── VM 103: Home Assistant
     ├── VM 104: Hermes Automation
-    └── Test-/Lernumgebungen
+    └── isolierte Lern- und Laborumgebungen
 ```
 
 ## Geplante Diagramme

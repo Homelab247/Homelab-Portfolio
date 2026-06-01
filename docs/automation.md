@@ -6,16 +6,16 @@ Automation im Homelab soll wiederkehrende Aufgaben nachvollziehbar, reproduzierb
 
 ## Bereiche
 
-| Bereich | Beispiel |
+| Bereich | Referenz |
 |---|---|
 | Statusberichte | Markdown-Report über Host, Container und Dienste |
 | Service-Checks | einfache Port-/HTTP-Prüfungen |
 | Konfigurations-Export | Compose-Dateien ohne Secrets sichern |
 | Dokumentation | Export in das GitHub-Portfolio |
 
-## Beispielskripte
+## Admin-Skripte
 
-Im Ordner [`automation/scripts`](../automation/scripts) liegen kleine Beispielskripte:
+Im Ordner [`automation/scripts`](../automation/scripts) liegen kleine Admin-Skripte:
 
 - `check-service-ports.sh`
 - `export-docker-compose-configs.sh`

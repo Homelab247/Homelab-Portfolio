@@ -1,18 +1,16 @@
 # Automation Scripts
 
-Dieser Ordner enthält kleine, bewusst einfache Admin-Skripte für typische Homelab-Aufgaben. Die Skripte sind so geschrieben, dass sie ohne private Zugangsdaten funktionieren und als Bewerbungsnachweis zeigen, wie Checks, Exporte und Dokumentation automatisiert werden können.
+Dieser Ordner enthält kleine Admin-Skripte für typische Homelab-Aufgaben. Die Skripte sind bewusst einfach gehalten und zeigen nachvollziehbare Automatisierung für Checks, Exporte und Statusberichte.
 
 ## Enthaltene Skripte
 
 | Script | Zweck |
 |---|---|
-| `check-service-ports.sh` | prüft, ob zentrale interne Dienste auf ihren Ports erreichbar sind |
-| `export-docker-compose-configs.sh` | sammelt Compose-Dateien aus den Service-LXCs in einen Backup-/Exportordner |
-| `generate-homelab-status.sh` | erzeugt einen kurzen Markdown-Statusbericht für die Dokumentation |
+| `check-service-ports.sh` | prüft zentrale interne Dienste auf erreichbare Ports |
+| `export-docker-compose-configs.sh` | sammelt Compose-Dateien aus den Service-LXCs in einen Exportordner |
+| `generate-homelab-status.sh` | erzeugt einen Markdown-Statusbericht für die Dokumentation |
 
 ## Nutzung
-
-Die Skripte sind als Beispiele gedacht. Vor produktiver Nutzung müssen Hostnamen/IPs an die eigene Umgebung angepasst werden.
 
 ```bash
 chmod +x automation/scripts/*.sh

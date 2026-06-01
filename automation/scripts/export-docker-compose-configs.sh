@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Beispiel: Compose-Konfigurationen zentral exportieren.
+# Compose-Konfigurationen zentral exportieren.
 # Dieses Script ist bewusst konservativ: Es kopiert nur compose.yml-Dateien
 # und keine .env-Dateien oder Secrets.
 

@@ -15,7 +15,7 @@ Das Monitoring zeigt zwei Ebenen getrennt voneinander:
 | Grafana | Dashboards und Visualisierung | aktiv in LXC 102 `monitoring` |
 | Prometheus | Metriksammlung | aktiv in LXC 102 `monitoring` |
 | Node Exporter | Linux-/Container-Metriken | aktiv in LXC 102 und LXC 110 |
-| Docker/cAdvisor | Container-Metriken | optional geplant |
+| Docker/cAdvisor | Container-Metriken | als späterer Ausbau vorgesehen |
 
 ## Rollen
 
@@ -88,6 +88,6 @@ Grafana-Provisioning kann über die gesicherten Compose-Backups im Pfad `/opt/ho
 ## Nächste Schritte
 
 - Uptime-Kuma-Checks für Prometheus und Exporter ergänzen
-- optional cAdvisor für Container-Metriken testen
+- optional cAdvisor für Container-Metriken validieren
 - Proxmox-Metriken über sicheren Exporter/API-Weg anbinden
 - anonymisierte Screenshots für das Portfolio erstellen

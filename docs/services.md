@@ -10,7 +10,7 @@
 | Node Exporter | LXC 102 `monitoring` | Systemmetriken Monitoring-LXC | aktiv |
 | Node Exporter | LXC 110 `docker-services` | Systemmetriken Docker-Services-LXC | aktiv |
 | Docker Engine | LXC 110 `docker-services` | Containerplattform | aktiv |
-| IT-Tools | LXC 110 `docker-services` | Demo-/Admin-Webtool | aktiv |
+| IT-Tools | LXC 110 `docker-services` | Admin-/Werkzeugdienst | aktiv |
 | Home Assistant | VM 103 | Smart Home | aktiv |
 | Hermes Agent | VM 104 | Automation / Assistenz | aktiv |
 
@@ -34,7 +34,7 @@ Node Exporter läuft als Docker-Container innerhalb der LXCs. Auf dem Proxmox-Ho
 
 ## Docker Services
 
-Der LXC `docker-services` ist bewusst getrennt vom Monitoring. Dort laufen allgemeine Tools und Demo-Dienste, z. B. IT-Tools.
+Der LXC `docker-services` ist bewusst getrennt vom Monitoring. Dort laufen allgemeine Tools und Werkzeugdienste, z. B. IT-Tools.
 
 ## Smart Home
 

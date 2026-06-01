@@ -11,11 +11,11 @@ Zielbild:
 - **LXC 110 `docker-services`** wird neu erstellt:
   - Docker Engine
   - Docker Compose
-  - Beispielservice `it-tools`
+  - erster produktiver interner Werkzeugdienst `it-tools`
 
 Nicht anfassen:
 
-- keine vSRO-/Windows-Test-VMs
+- keine vSRO-/Windows-Labor-VMs
 - keine VM100/105/106-Änderungen
 - kein Docker direkt auf dem Proxmox-Host
 - keine Router-/Portfreigaben
@@ -200,9 +200,9 @@ pct exec 110 -- bash /root/install-docker-lxc110.sh
 
 ---
 
-## 4. Beispielservice in LXC 110 starten
+## 4. erster produktiver interner Werkzeugdienst in LXC 110 starten
 
-Als erster sauberer Demo-Service für das Portfolio: **IT-Tools** auf Port `8081`.
+Als erster sauberer Werkzeugdienst für das Portfolio: **IT-Tools** auf Port `8081`.
 
 ### 4.1 Compose-Script erstellen
 
@@ -297,4 +297,4 @@ Nach erfolgreicher Ausführung diese Punkte in der README bzw. den Docs aktualis
 - Prometheus läuft in LXC 102
 - Uptime Kuma war bereits vorhanden
 - Docker Services laufen getrennt in LXC 110
-- IT-Tools läuft als erster Beispielservice
+- IT-Tools läuft als erster erster produktiver interner Werkzeugdienst
