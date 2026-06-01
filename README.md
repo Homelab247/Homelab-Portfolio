@@ -26,6 +26,23 @@ Das Homelab ist bewusst als Lern- und Testumgebung aufgebaut. Die Dokumentation 
 - Dokumentation, Troubleshooting und Betriebsprozesse
 - Sicherheitsbewusstsein: keine Secrets im Repository, Rollen- und Diensttrennung
 
+## Hardware
+
+### Proxmox-Server
+
+| Komponente | Details |
+|---|---|
+| Plattform | Eigenbau-/Desktop-System auf MSI MAG B550 TOMAHAWK |
+| Mainboard | Micro-Star International MAG B550 TOMAHAWK (MS-7C91) |
+| CPU | AMD Ryzen 7 5800X, 8 Kerne / 16 Threads |
+| RAM | 32 GB |
+| Systemdisk | 447 GB SSD, Patriot Burst |
+| Datenspeicher | 1,8 TB SSD, WDC WDS200T2B0A |
+| Virtualisierung | Proxmox VE 9.1.9, Bare-Metal |
+| Storage-Pools | `local`, `local-lvm`, separater Datenspeicher `daten` |
+
+Der Host ist bewusst als leistungsfähige lokale Virtualisierungsplattform aufgebaut. Die Trennung zwischen Systemdisk und separatem Datenspeicher erleichtert die Organisation von VMs, LXC-Containern, Backups und Exporten.
+
 ## Architektur
 
 ```mermaid
@@ -90,6 +107,7 @@ Jede Rolle wird in eigenen Markdown-Dateien beschrieben. Das Repository soll nac
 
 ## Dokumentation
 
+- [Hardware](docs/hardware.md)
 - [Architektur](docs/architecture.md)
 - [Netzwerk](docs/network.md)
 - [Services](docs/services.md)
