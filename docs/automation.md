@@ -2,14 +2,16 @@
 
 ## Ziel
 
-Automation im Homelab soll wiederkehrende Aufgaben nachvollziehbar, reproduzierbar und weniger fehleranfällig machen. Der Fokus liegt nicht auf komplexer Enterprise-Automation, sondern auf praktischen Admin-Hilfen.
+Ich nutze Automation im Homelab für kleine wiederkehrende Aufgaben. Es geht nicht um ein großes Automationssystem, sondern um praktische Admin-Hilfen.
+
+Beispiele sind Statusprüfungen, Portchecks, Konfigurations-Exporte und Notizen für die Dokumentation.
 
 ## Bereiche
 
 | Bereich | Referenz |
 |---|---|
 | Statusberichte | Markdown-Report über Host, Container und Dienste |
-| Service-Checks | einfache Port-/HTTP-Prüfungen |
+| Service-Checks | einfache Port- und HTTP-Prüfungen |
 | Konfigurations-Export | Compose-Dateien ohne Secrets sichern |
 | Dokumentation | Export in das GitHub-Portfolio |
 
@@ -23,11 +25,13 @@ Im Ordner [`automation/scripts`](../automation/scripts) liegen kleine Admin-Skri
 
 ## Hermes Agent
 
-Hermes Agent wird als Automations- und Assistenzsystem genutzt. Typische Aufgaben:
+Auf einer eigenen VM laufen Automatisierungs- und Dokumentationsaufgaben. Dazu nutze ich unter anderem Hermes Agent.
+
+Typische Aufgaben:
 
 - Infrastruktur inventarisieren
 - Dokumentation aktualisieren
-- Logs und Fehlermeldungen strukturieren
+- Logs und Fehlermeldungen sortieren
 - wiederkehrende Checks vorbereiten
 - Änderungen mit Rollback-Hinweisen dokumentieren
 

@@ -1,6 +1,6 @@
 # Homelab Portfolio
 
-> Dokumentation meines privaten Homelabs mit Fokus auf Proxmox, Linux-Administration, LXC, Docker, Monitoring, Storage, Automation und sauberer Betriebsdokumentation.
+> Mein privates Homelab auf Basis von Proxmox VE. Hier dokumentiere ich, wie ich Linux-Systeme, LXC-Container, Docker-Dienste, Monitoring und Storage zuhause betreibe.
 
 ![Proxmox](https://img.shields.io/badge/Proxmox-VE-orange?logo=proxmox)
 ![Linux](https://img.shields.io/badge/Linux-Server-informational?logo=linux)
@@ -10,9 +10,11 @@
 
 ## Überblick
 
-Dieses Repository dokumentiert mein persönliches Homelab als praxisnahes IT-Portfolio. Ziel ist es, typische Aufgaben aus Systemadministration und Fachinformatik Systemintegration nachvollziehbar zu zeigen: Virtualisierung, Dienste trennen, Monitoring aufbauen, Storage strukturieren, Backups planen, Automatisierung einsetzen und Änderungen sauber dokumentieren.
+Ich betreibe zuhause einen Proxmox-Server und nutze ihn als Lernumgebung für Systemadministration.
 
-Das Homelab ist bewusst als Lern- und Laborumgebung aufgebaut. Die Dokumentation zeigt nicht nur, welche Dienste laufen, sondern auch, warum sie getrennt wurden und welche administrativen Fähigkeiten dabei trainiert werden.
+Daran übe ich FISI-Themen praktisch: Linux-Server betreiben, Dienste trennen, Docker einsetzen, Monitoring aufbauen, Konfigurationen sichern und Fehler systematisch eingrenzen.
+
+Vieles davon habe ich aufgebaut, getestet, wieder angepasst und anschließend dokumentiert. Das Repository soll deshalb nicht nur eine Diensteliste sein, sondern auch zeigen, wie ich Entscheidungen und offene Punkte festhalte.
 
 ## Schwerpunkte
 
@@ -20,11 +22,12 @@ Das Homelab ist bewusst als Lern- und Laborumgebung aufgebaut. Die Dokumentation
 - Linux-Server und LXC-Container
 - Docker Engine und Docker Compose
 - Monitoring mit Uptime Kuma, Grafana, Prometheus und Node Exporter
-- Storage- und Backup-Konzept
+- Storage über SMB/CIFS
+- Backup-Planung mit ehrlicher Beschreibung des aktuellen Stands
 - Smart-Home-Integration mit Home Assistant
-- Automatisierung mit Hermes Agent
-- Dokumentation, Troubleshooting und Betriebsprozesse
-- Sicherheitsbewusstsein: keine Secrets im Repository, Rollen- und Diensttrennung
+- Automatisierung und kleine Admin-Skripte
+- Troubleshooting und Betriebsnotizen
+- Security-Grundsätze für ein öffentliches Repository
 
 ## Hardware
 
@@ -41,7 +44,7 @@ Das Homelab ist bewusst als Lern- und Laborumgebung aufgebaut. Die Dokumentation
 | Virtualisierung | Proxmox VE 9.1.9, Bare-Metal |
 | Storage-Pools | `local`, `local-lvm`, separater Datenspeicher `daten` |
 
-Der Host ist bewusst als leistungsfähige lokale Virtualisierungsplattform aufgebaut. Die Trennung zwischen Systemdisk und separatem Datenspeicher erleichtert die Organisation von VMs, LXC-Containern, Backups und Exporten.
+Der Host ist meine zentrale Virtualisierungsplattform. Systemdisk und Datenspeicher sind getrennt, damit VMs, LXC-Container, Exporte und lokale Daten nicht komplett vermischt werden.
 
 ## Architektur
 
@@ -68,45 +71,45 @@ flowchart TD
 | System | Rolle | Beschreibung |
 |---|---|---|
 | Proxmox VE | Virtualisierung | Basis für VMs und LXC-Container |
-| LXC 101 | Storage | Datenablage, SMB/CIFS, Backup-Ziel |
+| LXC 101 | Storage | Datenablage, SMB/CIFS und interne Exporte |
 | LXC 102 | Monitoring | Uptime Kuma, Grafana, Prometheus und Node Exporter |
-| LXC 110 | Docker Services | Separater Container für Docker-/Werkzeugdienste |
+| LXC 110 | Docker Services | Separater Container für Docker- und Werkzeugdienste |
 | VM 103 | Smart Home | Home Assistant |
-| VM 104 | Automation | Hermes Agent, Telegram Gateway, Automatisierung |
-| Lab-Umgebungen | Lernumgebung | Isolierte Windows-/Linux-Laborumgebungen |
+| VM 104 | Automation | Hermes Agent, Telegram Gateway und Automatisierung |
+| Lab-Umgebungen | Lernumgebung | Isolierte Windows- und Linux-Laborsysteme |
 
-Private IP-Adressen, Tokens, MAC-Adressen und sensible Details werden bewusst nicht öffentlich dokumentiert.
+Private IP-Adressen, Tokens, MAC-Adressen und sensible Details stehen nicht im öffentlichen Repository.
 
 ## Aktuelle Dienste
 
 | Dienst | Rolle | System |
 |---|---|---|
 | Uptime Kuma | Verfügbarkeitsmonitoring | LXC 102 `monitoring` |
-| Grafana | Dashboards / Metriken | LXC 102 `monitoring` |
+| Grafana | Dashboards und Metriken | LXC 102 `monitoring` |
 | Prometheus | Metriksammlung | LXC 102 `monitoring` |
 | Node Exporter | Linux-Systemmetriken | LXC 102 `monitoring`, LXC 110 `docker-services` |
 | Docker Engine | Containerplattform | LXC 110 `docker-services` |
-| IT-Tools | Referenz-/Werkzeugdienst | LXC 110 `docker-services` |
+| IT-Tools | interner Werkzeugdienst | LXC 110 `docker-services` |
 | Home Assistant | Smart-Home-Verwaltung | VM 103 |
-| Hermes Agent | Automatisierung / Assistenzsystem | VM 104 |
+| Hermes Agent | Automatisierung und Dokumentation | VM 104 |
 
-## Was dieses Homelab zeigt
+## Was ich damit übe
 
-### Infrastruktur planen
+### Systeme planen und trennen
 
-Die Dienste sind rollenbasiert getrennt. Storage, Monitoring, allgemeine Docker-Dienste und Automation laufen nicht ungeordnet in einem einzigen Container, sondern jeweils in klar definierten Systemen.
+Monitoring, Storage, Docker-Dienste und Automation laufen nicht in einem großen Mischsystem. Jede Rolle hat ein eigenes Ziel. Das macht Updates, Fehlersuche und spätere Änderungen einfacher.
 
 ### Monitoring betreiben
 
-Uptime Kuma übernimmt Verfügbarkeitschecks. Prometheus sammelt erste Systemmetriken über Node Exporter. Grafana dient als Dashboard-Schicht und visualisiert diese Metriken.
+Uptime Kuma prüft, ob Dienste erreichbar sind. Prometheus sammelt Metriken über Node Exporter. Grafana bereitet diese Werte als Dashboard auf.
 
-### Containerisierung nutzen
+### Docker sinnvoll einsetzen
 
-Allgemeine Tools und Werkzeugdienste laufen in einem eigenen Docker-Services-LXC. Dadurch bleiben Monitoring und produktionsnahe Services sauber getrennt.
+Allgemeine Tools laufen im separaten Docker-Services-LXC. Dadurch bleibt das Monitoring getrennt von normalen Werkzeugdiensten.
 
 ### Dokumentation pflegen
 
-Jede Rolle wird in eigenen Markdown-Dateien beschrieben. Das Repository soll nachvollziehbar zeigen, wie die Umgebung aufgebaut ist, welche Entscheidungen getroffen wurden und wie sie weiterentwickelt werden kann.
+Jede wichtige Rolle hat eine eigene Markdown-Datei. So kann ich später sehen, warum ein Dienst wo läuft und welche Punkte noch offen sind.
 
 ## Dokumentation
 
@@ -123,27 +126,35 @@ Jede Rolle wird in eigenen Markdown-Dateien beschrieben. Das Repository soll nac
 - [Zielzustand Proxmox](docs/proxmox-target-state.md)
 - [Roadmap](docs/roadmap.md)
 
+## Aktueller Stand und Grenzen
+
+Das Homelab ist im Aufbau. Monitoring, Docker-Services, Storage und Automation sind getrennt beschrieben.
+
+Beim Thema Backup bin ich noch nicht am Ziel: Es gibt aktuell kein unabhängiges zweites Backup-Medium. Snapshots und lokale Sicherungen verkaufe ich deshalb nicht als vollständiges Backup-Konzept. Ein separates Backup-Ziel ist als nächster Ausbauschritt geplant.
+
 ## Security- und Datenschutzgrundsätze
 
 - keine Passwörter, Tokens oder API-Keys im Repository
 - keine MAC-Adressen oder sensiblen Hostdetails
 - öffentliche Dokumentation nutzt Rollen statt privater Detaildaten
-- bereinigte Referenzkonfigurationen werden als `.example` dokumentiert
-- Dienste werden intern betrieben, keine öffentlichen Portfreigaben im Rahmen dieses Repos
+- Referenzkonfigurationen werden als `.example` abgelegt
+- Dienste werden intern betrieben
+- keine öffentlichen Portfreigaben im Rahmen dieses Repositories
 
 ## Roadmap
 
 - [x] Rollenmodell für Storage, Monitoring, Docker Services und Automation festlegen
 - [x] Grafana im Monitoring-LXC ergänzen
-- [x] Separaten Docker-Services-LXC erstellen
-- [x] erster produktiver interner Werkzeugdienst über Docker Compose bereitstellen
-- [x] Prometheus und Exporter sauber ergänzen
+- [x] separaten Docker-Services-LXC erstellen
+- [x] ersten internen Werkzeugdienst über Docker Compose bereitstellen
+- [x] Prometheus und Exporter ergänzen
 - [x] Grafana-Dashboard exportieren und dokumentieren
-- [ ] Backup-Prozess praktisch validieren und dokumentieren
+- [ ] Backup-Prozess mit Test-Restore prüfen
+- [ ] separates Backup-Ziel einplanen
 - [ ] Netzwerkdiagramm als Draw.io-Datei ergänzen
-- [ ] anonymisierte Screenshots anonymisiert hinzufügen
+- [ ] anonymisierte Screenshots hinzufügen
 - [ ] GitHub Actions für Markdown-Prüfung ergänzen
 
 ## Hinweis
 
-Dieses Repository beschreibt eine private Lern- und Laborumgebung. Es erhebt keinen Anspruch auf produktionsreife Enterprise-Architektur, sondern zeigt praxisnahes Lernen, saubere Dokumentation und den strukturierten Aufbau administrativer Fähigkeiten.
+Das ist kein Firmennetz und keine produktive Umgebung. Ich nutze das Homelab, um reale Admin-Aufgaben zu üben und meine Arbeit verständlich zu dokumentieren.

@@ -2,10 +2,10 @@
 
 ## Ziel
 
-Das Monitoring zeigt zwei Ebenen getrennt voneinander:
+Das Monitoring hat zwei Aufgaben:
 
-- Uptime Kuma: Ist ein Dienst erreichbar?
-- Prometheus, Node Exporter und Grafana: Wie verhalten sich Systeme und Dienste über Zeit?
+- Uptime Kuma prüft, ob ein Dienst erreichbar ist.
+- Prometheus, Node Exporter und Grafana zeigen, wie sich Systeme über Zeit verhalten.
 
 ## Aktueller Stand
 
@@ -14,20 +14,20 @@ Das Monitoring zeigt zwei Ebenen getrennt voneinander:
 | Uptime Kuma | Verfügbarkeitschecks | aktiv in LXC 102 `monitoring` |
 | Grafana | Dashboards und Visualisierung | aktiv in LXC 102 `monitoring` |
 | Prometheus | Metriksammlung | aktiv in LXC 102 `monitoring` |
-| Node Exporter | Linux-/Container-Metriken | aktiv in LXC 102 und LXC 110 |
+| Node Exporter | Linux- und Container-Metriken | aktiv in LXC 102 und LXC 110 |
 | Docker/cAdvisor | Container-Metriken | als späterer Ausbau vorgesehen |
 
 ## Rollen
 
 ### Uptime Kuma
 
-Uptime Kuma beantwortet die Frage:
+Uptime Kuma beantwortet eine einfache Frage:
 
 > Ist der Dienst erreichbar?
 
 Typische Checks:
 
-- Proxmox Webinterface
+- Proxmox-Webinterface
 - Grafana
 - Prometheus
 - IT-Tools
@@ -35,21 +35,23 @@ Typische Checks:
 
 ### Prometheus
 
-Prometheus sammelt Metriken und stellt sie Grafana als Datenquelle bereit. In Phase 1 werden folgende Ziele gescraped:
+Prometheus sammelt Metriken und stellt sie Grafana als Datenquelle bereit.
+
+In Phase 1 werden diese Ziele abgefragt:
 
 - Prometheus selbst
 - Node Exporter im Monitoring-LXC
 - Node Exporter im Docker-Services-LXC
 
-Die konkrete private IP-Adressierung wird im öffentlichen Repository bewusst nicht dokumentiert.
+Die private IP-Adressierung steht nicht im öffentlichen Repository.
 
 ### Node Exporter
 
-Node Exporter läuft als Docker-Container innerhalb der jeweiligen LXC-Container. Dadurch werden keine Pakete direkt auf dem Proxmox-Host installiert.
+Node Exporter läuft als Docker-Container innerhalb der jeweiligen LXC-Container. Dadurch werden keine zusätzlichen Pakete direkt auf dem Proxmox-Host installiert.
 
 ### Grafana
 
-Grafana nutzt Prometheus als Datenquelle. Zusätzlich liegt ein einfaches Dashboard als JSON im Repository, damit die Monitoring-Struktur nachvollziehbar und reproduzierbar bleibt.
+Grafana nutzt Prometheus als Datenquelle. Zusätzlich liegt ein einfaches Dashboard als JSON im Repository, damit der Aufbau auch ohne Zugriff auf mein Heimnetz verständlich bleibt.
 
 ## Betriebsstand nach Phase 1
 
@@ -64,7 +66,7 @@ Grafana nutzt Prometheus als Datenquelle. Zusätzlich liegt ein einfaches Dashbo
 
 ## Rollback
 
-Prometheus und Node Exporter sind bewusst getrennt von Uptime Kuma und Grafana angelegt.
+Prometheus und Node Exporter sind getrennt von Uptime Kuma und Grafana angelegt.
 
 Rollback in LXC 102:
 
@@ -88,6 +90,6 @@ Grafana-Provisioning kann über die gesicherten Compose-Backups im Pfad `/opt/ho
 ## Nächste Schritte
 
 - Uptime-Kuma-Checks für Prometheus und Exporter ergänzen
-- optional cAdvisor für Container-Metriken validieren
-- Proxmox-Metriken über sicheren Exporter/API-Weg anbinden
+- cAdvisor für Container-Metriken prüfen
+- Proxmox-Metriken über einen sicheren Exporter oder API-Weg anbinden
 - anonymisierte Screenshots für das Portfolio erstellen

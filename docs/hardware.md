@@ -18,13 +18,13 @@
 | Datenträger | Größe | Nutzung |
 |---|---:|---|
 | System-SSD | ca. 447 GB | Proxmox-System, lokaler Speicher, LVM-Thin |
-| Datenspeicher | ca. 1,8 TB | VM-/LXC-Daten, Exporte, Backups und Storage-Rolle |
+| Datenspeicher | ca. 1,8 TB | VM-/LXC-Daten, Exporte und Storage-Rolle |
 
 ## Warum diese Hardware?
 
 Der Server bietet genug Leistung für mehrere parallele VMs und LXC-Container. Die CPU mit 8 Kernen / 16 Threads eignet sich gut für Virtualisierung, Laborumgebungen, Monitoring, Smart-Home-Dienste und Automatisierung.
 
-Die getrennte Storage-Struktur hilft dabei, Systemdaten und Nutzdaten sauberer zu organisieren.
+Durch die getrennte Storage-Struktur liegen Systemdaten und Nutzdaten nicht auf derselben logischen Ebene.
 
 ## Geplante Ergänzungen
 

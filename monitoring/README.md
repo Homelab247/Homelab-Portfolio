@@ -14,7 +14,7 @@ LXC 102 ist der dedizierte Ort für Monitoring-Dienste.
 
 ## Live-Pfade
 
-Die produktiven Compose-Dateien liegen bewusst auf den jeweiligen LXCs und nicht mit privaten Details im öffentlichen Repository.
+Die produktiven Compose-Dateien liegen auf den jeweiligen LXCs. Private Details werden nicht im öffentlichen Repository abgelegt.
 
 - Prometheus: `/opt/homelab-monitoring/prometheus/`
 - Node Exporter Monitoring-LXC: `/opt/homelab-monitoring/node-exporter/`
@@ -30,6 +30,6 @@ Die produktiven Compose-Dateien liegen bewusst auf den jeweiligen LXCs und nicht
 ## Hinweise
 
 - Uptime Kuma bleibt separat und wird nicht durch Prometheus ersetzt.
-- Prometheus sammelt Metriken; Grafana visualisiert sie.
+- Prometheus sammelt Metriken. Grafana visualisiert sie.
 - Node Exporter läuft innerhalb der LXC-Container als Docker-Container.
 - Auf dem Proxmox-Host wurden keine Monitoring-Pakete installiert.

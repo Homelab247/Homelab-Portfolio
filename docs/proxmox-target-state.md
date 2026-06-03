@@ -4,7 +4,7 @@
 
 | ID | Name | Typ | Rolle |
 |---|---|---|---|
-| 101 | Storage / Daten | LXC | Datenablage, SMB/CIFS, Backup-Ziel |
+| 101 | Storage / Daten | LXC | Datenablage, SMB/CIFS und interne Exporte |
 | 102 | monitoring | LXC | Uptime Kuma, Grafana, Prometheus, Node Exporter |
 | 110 | docker-services | LXC | Docker Engine, Compose, Werkzeugdienste, Node Exporter |
 | 103 | homeassistant | VM | Smart Home |
@@ -19,7 +19,7 @@ Docker läuft nicht direkt auf dem Proxmox-Host. Stattdessen gibt es einen eigen
 
 - Monitoring-LXC: Uptime Kuma, Grafana, Prometheus und Node Exporter aktiv
 - Docker-Services-LXC: Docker Engine, Compose, IT-Tools und Node Exporter aktiv
-- Storage-LXC: separate Daten-/Backup-Rolle
+- Storage-LXC: separate Daten- und Exportrolle
 - Automation-VM: Hermes Agent getrennt betrieben
 
 ## Monitoring-Status Phase 1
@@ -35,6 +35,6 @@ Docker läuft nicht direkt auf dem Proxmox-Host. Stattdessen gibt es einen eigen
 ## Geplante Erweiterungen
 
 - Uptime-Kuma-Checks für neue Monitoring-Komponenten ergänzen
-- optional cAdvisor für Container-Metriken validieren
+- cAdvisor für Container-Metriken prüfen
 - Proxmox-Metriken sicher anbinden
 - Backup- und Restore-Prozess dokumentieren
